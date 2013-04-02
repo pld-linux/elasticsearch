@@ -2,7 +2,6 @@
 # - register user
 # - pldize initscript
 # - system jars:
-#   jts-1.12.jar
 #   lucene-*-3.6.2.jar
 #   spatial4j-0.3.jar
 Summary:	A distributed, highly available, RESTful search engine
@@ -22,11 +21,11 @@ URL:		http://www.elasticsearch.org/
 BuildRequires:	rpmbuild(macros) >= 1.228
 Requires(post,preun):	/sbin/chkconfig
 Requires:	java-jna >= 3.2.4
+Requires:	java-jts >= 1.12
 Requires:	java-log4j >= 1.2.14
 Requires:	java-sigar >= 1.6.4
 Requires:	java-snappy >= 1.0.4
 Requires:	jpackage-utils
-Requires:	jre
 Requires:	rc-scripts
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -38,6 +37,7 @@ A distributed, highly available, RESTful search engine.
 %setup -q
 
 rm lib/jna-3.3.0.jar
+rm lib/jts-1.12.jar
 rm lib/log4j-1.2.17.jar
 rm lib/snappy-java-1.0.4.1.jar
 rm -r lib/sigar/
@@ -121,7 +121,6 @@ fi
 
 %dir %{_javadir}/%{name}/lib
 %{_javadir}/%{name}/lib/%{name}-%{version}.jar
-%{_javadir}/%{name}/lib/jts-1.12.jar
 %{_javadir}/%{name}/lib/spatial4j-0.3.jar
 %{_javadir}/%{name}/lib/lucene-analyzers-3.6.2.jar
 %{_javadir}/%{name}/lib/lucene-core-3.6.2.jar
