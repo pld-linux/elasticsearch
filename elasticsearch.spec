@@ -1,9 +1,10 @@
 # TODO
 # - register user
+# - pldize initscript
 Summary:	A distributed, highly available, RESTful search engine
 Name:		elasticsearch
 Version:	0.19.9
-Release:	0.1
+Release:	0.2
 License:	Apache v2.0
 Group:		Daemons
 Source0:	https://github.com/downloads/elasticsearch/elasticsearch/%{name}-%{version}.tar.gz
@@ -14,7 +15,8 @@ Source3:	config-logging.yml
 Source4:	%{name}.sysconfig
 Source5:	%{name}.tmpfiles
 URL:		http://www.elasticsearch.com/
-Requires:	/sbin/chkconfig
+BuildRequires:	rpmbuild(macros) >= 1.228
+Requires(post,preun):	/sbin/chkconfig
 Requires:	java-jna >= 3.2.4
 Requires:	java-log4j >= 1.2.14
 Requires:	java-sigar >= 1.6.4
